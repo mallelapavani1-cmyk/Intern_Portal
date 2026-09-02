@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const HRDashboard = () => {
+const TLDashboard = () => {
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [remarks, setRemarks] = useState("");
   const [requestStatus, setRequestStatus] = useState("pending");
@@ -48,10 +48,8 @@ const HRDashboard = () => {
 
   return (
     <div style={styles.page}>
-
       {/* SIDEBAR */}
       <aside style={styles.sidebar}>
-
         <div>
           <div style={styles.logo}>UPTOSKILL</div>
 
@@ -61,7 +59,6 @@ const HRDashboard = () => {
         </div>
 
         <nav style={styles.nav}>
-
           <div style={{ ...styles.navItem, ...styles.active }}>
             🏠 <span>Dashboard</span>
           </div>
@@ -77,81 +74,58 @@ const HRDashboard = () => {
           <div style={styles.navItem}>
             🚪 <span>Logout</span>
           </div>
-
         </nav>
 
         <div style={styles.profileBox}>
-
-          <div style={styles.avatar}>
-            👤
-          </div>
+          <div style={styles.avatar}>👤</div>
 
           <div>
-            <strong>HR</strong>
+            <strong>TL</strong>
 
             <div style={styles.profileText}>
-              HR Dashboard
+              TL Dashboard
             </div>
           </div>
-
         </div>
-
       </aside>
-
 
       {/* MAIN CONTENT */}
       <main style={styles.main}>
-
         {/* HEADER */}
         <header style={styles.header}>
-
-          <h1>HR Dashboard</h1>
+          <h1>TL Dashboard</h1>
 
           <div style={styles.user}>
-
-            <div style={styles.userAvatar}>
-              👤
-            </div>
+            <div style={styles.userAvatar}>👤</div>
 
             <div>
-              <strong>HR</strong>
+              <strong>TL</strong>
 
               <div style={styles.userRole}>
-                Human Resources
+                Team Leader
               </div>
             </div>
-
           </div>
-
         </header>
-
 
         {/* WELCOME */}
         <section style={styles.welcome}>
-
-          <div style={styles.welcomeIcon}>
-            👋
-          </div>
+          <div style={styles.welcomeIcon}>👋</div>
 
           <div>
-
             <h2>
-              Welcome back, HR!
+              Welcome back, TL!
             </h2>
 
             <p>
               Review internship certificate requests, verify internship
               details and manage certificate generation.
             </p>
-
           </div>
-
         </section>
-
 
         {/* SUMMARY CARDS */}
         <section style={styles.cards}>
-
           <SummaryCard
             icon="📋"
             title="Pending Requests"
@@ -169,15 +143,11 @@ const HRDashboard = () => {
             title="Rejected"
             number="0"
           />
-
         </section>
-
 
         {/* PENDING REQUESTS */}
         <section style={styles.section}>
-
           <div style={styles.sectionHeader}>
-
             <div>
               <h2>
                 Pending Certificate Requests
@@ -191,18 +161,12 @@ const HRDashboard = () => {
             <button style={styles.primaryButton}>
               ↻ Refresh Requests
             </button>
-
           </div>
 
-
           <div style={styles.tableWrapper}>
-
             <table style={styles.table}>
-
               <thead>
-
                 <tr>
-
                   <th style={styles.th}>
                     Intern Name
                   </th>
@@ -226,15 +190,11 @@ const HRDashboard = () => {
                   <th style={styles.th}>
                     Action
                   </th>
-
                 </tr>
-
               </thead>
 
               <tbody>
-
                 <tr>
-
                   <td style={styles.td}>
                     {sampleRequest.internName}
                   </td>
@@ -252,42 +212,29 @@ const HRDashboard = () => {
                   </td>
 
                   <td style={styles.td}>
-
                     <span style={styles.pendingBadge}>
                       Pending
                     </span>
-
                   </td>
 
                   <td style={styles.td}>
-
                     <button
                       style={styles.viewButton}
                       onClick={openRequest}
                     >
                       Review
                     </button>
-
                   </td>
-
                 </tr>
-
               </tbody>
-
             </table>
-
           </div>
-
         </section>
-
 
         {/* CERTIFICATE TEMPLATES */}
         <section style={styles.section}>
-
           <div style={styles.sectionHeader}>
-
             <div>
-
               <h2>
                 Certificate Templates
               </h2>
@@ -296,20 +243,15 @@ const HRDashboard = () => {
                 Manage the templates used when generating internship
                 certificates.
               </p>
-
             </div>
 
             <button style={styles.primaryButton}>
               + Manage Templates
             </button>
-
           </div>
 
-
           <div style={styles.templateGrid}>
-
             <div style={styles.templateCard}>
-
               <div style={styles.templateIcon}>
                 📜
               </div>
@@ -325,26 +267,17 @@ const HRDashboard = () => {
               <button style={styles.secondaryButton}>
                 Manage Templates
               </button>
-
             </div>
-
           </div>
-
         </section>
-
       </main>
-
 
       {/* REVIEW REQUEST MODAL */}
       {selectedRequest && (
-
         <div style={styles.overlay}>
-
           <div style={styles.modal}>
-
             {/* MODAL HEADER */}
             <div style={styles.modalHeader}>
-
               <div>
                 <h2>
                   Review Certificate Request
@@ -361,13 +294,10 @@ const HRDashboard = () => {
               >
                 ✕
               </button>
-
             </div>
-
 
             {/* REQUEST DETAILS */}
             <div style={styles.detailsGrid}>
-
               <Detail
                 label="Intern Name"
                 value={selectedRequest.internName}
@@ -387,15 +317,11 @@ const HRDashboard = () => {
                 label="Requested Date"
                 value={selectedRequest.requestedDate}
               />
-
             </div>
-
 
             {/* VERIFY INTERNSHIP DETAILS */}
             <div style={styles.verifySection}>
-
               <div style={styles.verifyHeader}>
-
                 <div>
                   <h3>
                     🔍 Verify Internship Details
@@ -409,12 +335,9 @@ const HRDashboard = () => {
                 <span style={styles.verifyBadge}>
                   Verification Required
                 </span>
-
               </div>
 
-
               <div style={styles.internshipGrid}>
-
                 <Detail
                   label="Company"
                   value={selectedRequest.companyName}
@@ -439,15 +362,11 @@ const HRDashboard = () => {
                   label="Internship Status"
                   value={selectedRequest.internshipStatus}
                 />
-
               </div>
-
             </div>
-
 
             {/* REMARKS */}
             <div style={styles.remarksSection}>
-
               <label style={styles.remarksLabel}>
                 Remarks
               </label>
@@ -458,15 +377,11 @@ const HRDashboard = () => {
                 placeholder="Enter remarks for this request..."
                 style={styles.textarea}
               />
-
             </div>
-
 
             {/* APPROVAL RESULT */}
             {showSuccess && requestStatus === "approved" && (
-
               <div style={styles.approvedBox}>
-
                 <strong>
                   ✅ Request Approved
                 </strong>
@@ -479,16 +394,11 @@ const HRDashboard = () => {
                   The certificate can now be generated using the selected
                   certificate template.
                 </span>
-
               </div>
-
             )}
 
-
             {showSuccess && requestStatus === "rejected" && (
-
               <div style={styles.rejectedBox}>
-
                 <strong>
                   ❌ Request Rejected
                 </strong>
@@ -496,17 +406,12 @@ const HRDashboard = () => {
                 <p>
                   The rejection remark has been recorded.
                 </p>
-
               </div>
-
             )}
-
 
             {/* ACTION BUTTONS */}
             {!showSuccess && (
-
               <div style={styles.actionButtons}>
-
                 <button
                   style={styles.rejectButton}
                   onClick={handleReject}
@@ -520,35 +425,25 @@ const HRDashboard = () => {
                 >
                   ✅ Approve & Generate Certificate
                 </button>
-
               </div>
-
             )}
-
           </div>
-
         </div>
-
       )}
-
     </div>
   );
 };
 
-
 /* SUMMARY CARD */
 
 const SummaryCard = ({ icon, title, number }) => {
-
   return (
     <div style={styles.card}>
-
       <div style={styles.cardIcon}>
         {icon}
       </div>
 
       <div>
-
         <div style={styles.cardTitle}>
           {title}
         </div>
@@ -556,21 +451,16 @@ const SummaryCard = ({ icon, title, number }) => {
         <div style={styles.cardNumber}>
           {number}
         </div>
-
       </div>
-
     </div>
   );
 };
 
-
 /* DETAIL */
 
 const Detail = ({ label, value }) => {
-
   return (
     <div style={styles.detail}>
-
       <span style={styles.detailLabel}>
         {label}
       </span>
@@ -578,16 +468,13 @@ const Detail = ({ label, value }) => {
       <strong>
         {value}
       </strong>
-
     </div>
   );
 };
 
-
 /* STYLES */
 
 const styles = {
-
   page: {
     minHeight: "100vh",
     display: "flex",
@@ -929,7 +816,7 @@ const styles = {
     marginBottom: "20px",
   },
 
- verifyHeader: {
+  verifyHeader: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
@@ -1020,4 +907,4 @@ const styles = {
   },
 };
 
-export default HRDashboard;
+export default TLDashboard;

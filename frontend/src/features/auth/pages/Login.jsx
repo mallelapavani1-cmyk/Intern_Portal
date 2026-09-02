@@ -82,6 +82,7 @@ export default function Login() {
       notify('success', 'Logged in successfully!');
 
       const userData = data.user || data;
+      
       navigate(`/${userData.role}/dashboard`);
     } catch (error) {
       console.error(error);

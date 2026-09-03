@@ -22,13 +22,6 @@ const certificateRequestSchema = new mongoose.Schema(
         index: true
     },
 
-    internshipId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "internship",
-        required: true,
-        index: true
-    },
-
     certificateType: {
         type: String,
         required: true,

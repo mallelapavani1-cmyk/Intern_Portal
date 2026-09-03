@@ -49,6 +49,16 @@ const userSchema = new mongoose.Schema(
             type: String,
             enum: ["admin", "intern", "teamleader"],
             default: "intern"
+        },
+        internshipDetails:{
+            teamleaderEmail: { type: String, trim: true, lowercase: true },
+            status: {
+                type: String,
+                enum: ["upcoming", "ongoing", "completed", "cancelled"],
+                default: "upcoming"
+            },
+            createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
+            createdAt: { type: Date, default: Date.now }
         }
     },
     {

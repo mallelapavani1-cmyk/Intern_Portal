@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from '../features/auth/pages/Login';
 import ProtectedRoute from '../features/shared/components/ProtectedRoute';
-import InternDashboard from '../features/auth/pages/InternDashboard';
-import HRDashboard from '../features/auth/pages/HRDashboard';
-import AdminDashboard from '../features/auth/pages/AdminDashboard';
+import InternDashboard from '../features/intern/pages/InternDashboard';
+import TLDashboard from '../features/teamleader/pages/TLDashboard';
+import AdminDashboard from '../features/admin/pages/AdminDashboard';
 import ThemeToggle from '../features/shared/components/ThemeToggle';
 import './App.css';
 
@@ -35,8 +35,8 @@ export default function App() {
         </Route>
 
 
-        <Route element={<ProtectedRoute allowedRoles={['hr']} />}>
-          <Route path="/hr/dashboard" element={<HRDashboard />} />
+        <Route element={<ProtectedRoute allowedRoles={['teamleader']} />}>
+          <Route path="/teamleader/dashboard" element={<TLDashboard />} />
         </Route>
 
 

@@ -9,9 +9,9 @@
     --muted: #a9acbe;
     --border: #2b2c3e;
     --line: #292a39;
-    --accent-1: #6d72ea;
-    --accent-2: #8c57e8;
-    --accent: #8276f1;
+    --accent-1: #0f766e;
+    --accent-2: #115e59;
+    --accent: #0f766e;
     --error: #fb7185;
     --success: #34d399;
     --shadow: #0008;
@@ -26,9 +26,9 @@
     --muted: #606379;
     --border: #dcddec;
     --line: #e4e5f0;
-    --accent-1: #5c61d9;
-    --accent-2: hsl(262, 66%, 55%);
-    --accent: #6056cf;
+    --accent-1: #0f766e;
+    --accent-2: #115e59;
+    --accent: #0f766e;
     --shadow: #565a861c;
 }
 
@@ -77,8 +77,7 @@ button {
     flex-direction: column;
     min-height: 100vh;
     background-color: var(--panel);
-    background-image: linear-gradient(rgba(125, 105, 255, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(125, 105, 255, .05) 1px, transparent 1px), radial-gradient(circle at 78% 45%, rgba(87, 74, 202, .22), transparent 35%);
-    background-size: 32px 32px, 32px 32px, 100% 100%;
+    background-image: none;
     border-right: 1px solid var(--border);
 }
 
@@ -97,8 +96,8 @@ button {
     height: 48px;
     border-radius: 12px;
     font-size: 25px;
-    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-    box-shadow: 0 8px 20px #6d52e95c;
+    background: var(--accent-1);
+    box-shadow: 0 8px 20px var(--shadow);
 }
 
 .brand-content {
@@ -306,8 +305,8 @@ button {
     font-weight: 800;
     border: 0;
     border-radius: 14px;
-    background: linear-gradient(100deg, var(--accent-1), var(--accent-2));
-    box-shadow: 0 10px 22px #755ae15c;
+    background: var(--accent-1);
+    box-shadow: 0 10px 22px var(--shadow);
 }
 
 .primary:hover:not(:disabled) {
@@ -332,8 +331,8 @@ button {
 .theme-toggle {
     position: fixed;
     z-index: 100;
-    top: 24px;
-    right: 24px;
+    bottom: 24px;
+    left: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -433,9 +432,7 @@ button {
     grid-template-rows: 86px 1fr;
     height: 100vh;
     background-color: var(--page);
-    background-image:
-        radial-gradient(circle at 15% 30%, rgba(125, 105, 255, 0.12), transparent 40%),
-        radial-gradient(circle at 85% 70%, rgba(87, 74, 202, 0.12), transparent 40%);
+    background-image: none;
     color: var(--text);
     overflow: hidden;
 }
@@ -548,7 +545,7 @@ button {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    background: var(--accent-1);
     color: #fff;
     display: grid;
     place-items: center;
@@ -858,8 +855,8 @@ button {
     }
 
     .theme-toggle {
-        top: 18px;
-        right: 18px;
+        bottom: 18px;
+        left: 18px;
     }
 
     .auth-card {

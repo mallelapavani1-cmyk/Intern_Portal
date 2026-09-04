@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createIntern } from '../services/teamleader.service';
+import { createIntern } from '../services/tl.service';
 
 const initialValues = { fullName: '', email: '', mobileNo: '', domain: '', startDate: '', endDate: '' };
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

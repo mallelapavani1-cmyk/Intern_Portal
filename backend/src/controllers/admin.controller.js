@@ -2,6 +2,7 @@ import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { generateInternCode } from "../utils/generateInternCode.js";
+import CertificateRequest from '../models/CertificateRequest.js';
 
 dotenv.config()
 
@@ -118,3 +119,50 @@ export async function createTeamLeader(req, res) {
         })
     }
 }
+
+
+// Admin only sees requests TL has already forwarded
+export const getForwardedRequests = async (req, res) => {
+  try {
+    const requests = await CertificateRequest.find({ status: 'processing' })
+      .populate('userId', 'fullName email internCode domain')
+      .sort({ requestedAt: -1 });
+
+    res.json({ requests });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+};
+
+export const finalizeRequest = async (req, res) => {
+  try {
+    const { action, rejectionReason } = req.body; // action: 'approve' | 'reject'
+
+    if (!['approve', 'reject'].includes(action)) {
+      return res.status(400).json({ message: 'action must be "approve" or "reject"' });
+    }
+
+    const request = await CertificateRequest.findById(req.params.id);
+    if (!request) return res.status(404).json({ message: 'Request not found' });
+
+    if (request.status !== 'processing') {
+      return res.status(409).json({ message: 'This request is not awaiting admin decision' });
+    }
+
+    if (action === 'reject' && !rejectionReason) {
+      return res.status(400).json({ message: 'rejectionReason is required when rejecting' });
+    }
+
+    request.status = action === 'approve' ? 'approved' : 'rejected';
+    request.reviewedBy = req.user.id;
+    request.reviewedAt = new Date();
+    if (action === 'reject') request.rejectionReason = rejectionReason;
+
+    await request.save();
+    res.json({ request });
+
+    // certificate generation trigger goes here later, once status === 'approved'
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+};

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useIntern } from '../hooks/useIntern';
 import { useAuth } from '../../auth/hooks/useAuth';
+import RequestCertificateModal from '../components/RequestCertificateModal';
+import MyRequestsList from '../components/MyRequestsList';
 import './InternDashboard.css';
 import '../../../app/App.css';
 
@@ -41,6 +43,7 @@ const calcDaysLeft = (end) => {
 /* ── nav items ── */
 const NAV_ITEMS = [
   { icon: '🏠', label: 'Dashboard', id: 'dashboard' },
+  { icon: '📄', label: 'Certificates', id: 'certificates' },
 ];
 
 /* ============================================================
@@ -51,6 +54,7 @@ export default function InternDashboard() {
   const { handleLogout } = useAuth();
   const navigate = useNavigate();
   const [activeNav, setActiveNav] = useState('dashboard');
+  const [showCertificateModal, setShowCertificateModal] = useState(false);
 
   const onLogout = () => {
     handleLogout();
@@ -125,8 +129,18 @@ export default function InternDashboard() {
           </p>
         </header>
 
+        {activeNav === 'certificates' && (
+          <>
+            <section className="certificate-actions" aria-label="Certificate requests">
+              <div><p className="request-eyebrow">CERTIFICATE DESK</p><h2>Request a certificate</h2><p>Choose a certificate and follow its progress here.</p></div>
+              <button type="button" className="request-primary-button" onClick={() => setShowCertificateModal(true)}>Request certificate</button>
+            </section>
+            <MyRequestsList />
+          </>
+        )}
+
         {/* ── Loading state ── */}
-        {loading && (
+        {activeNav === 'dashboard' && loading && (
           <div className="id-loading" role="status" aria-live="polite">
             <div className="id-spinner" aria-hidden="true" />
             <span>Loading your profile…</span>
@@ -134,7 +148,7 @@ export default function InternDashboard() {
         )}
 
         {/* ── Error state ── */}
-        {!loading && error && (
+        {activeNav === 'dashboard' && !loading && error && (
           <div className="id-error" role="alert">
             <span className="id-error-icon">⚠️</span>
             <span>{error}</span>
@@ -149,7 +163,7 @@ export default function InternDashboard() {
         )}
 
         {/* ── Profile data ── */}
-        {!loading && !error && profile && (
+        {activeNav === 'dashboard' && !loading && !error && profile && (
           <>
             {/* Profile Card */}
             <section className="id-profile-card" aria-label="Profile details">
@@ -272,9 +286,11 @@ export default function InternDashboard() {
                 <div className="id-stat-value info">{progress}%</div>
               </div>
             </div>
+
           </>
         )}
       </main>
+      {showCertificateModal && <RequestCertificateModal onClose={() => setShowCertificateModal(false)} />}
     </div>
   );
 }

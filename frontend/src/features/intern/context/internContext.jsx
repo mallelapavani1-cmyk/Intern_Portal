@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { getProfile } from "../services/interrn.api";
+import { getProfile } from "../services/intern.api";
 import { useAuth } from "../../auth/hooks/useAuth";
 
 export const InternContext = createContext(null);

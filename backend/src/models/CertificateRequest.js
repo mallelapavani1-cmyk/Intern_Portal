@@ -82,13 +82,9 @@ const certificateRequestSchema = new mongoose.Schema(
 
 certificateRequestSchema.pre("save", async function () {
     const userModel = mongoose.model("user");
-    const internshipModel = mongoose.model("internship");
 
     const user = await userModel.findById(this.userId);
     if (!user) throw new Error("userId does not reference an existing user");
-
-    const internship = await internshipModel.findById(this.internshipId);
-    if (!internship) throw new Error("internshipId does not reference an existing internship");
 
     if (this.templateId) {
         const certificateTemplateModel = mongoose.model("certificate_template");

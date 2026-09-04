@@ -1,10 +1,10 @@
 import express from 'express';
 import verifyAuth from '../middlewares/verifyAuth.js';
-import {getProfile} from '../controllers/intern.controller.js';
+import {getMyRequests, getProfile, submitCertificateRequest} from '../controllers/intern.controller.js';
 
-const router = express.Router();
+const internRouter = express.Router();
 
-router.use(verifyAuth, (req, res, next) => {
+internRouter.use(verifyAuth, (req, res, next) => {
 	if (req.user.role !== 'intern') {
 		return res.status(403).json({ message: 'Forbidden' });
 	}
@@ -12,8 +12,10 @@ router.use(verifyAuth, (req, res, next) => {
 	next();
 });
 
-router.get('/profile', getProfile);
+internRouter.get('/profile', getProfile);
 
+internRouter.post('/request-certificate', submitCertificateRequest);
 
+internRouter.get('/requests', getMyRequests);
 
-export default router;
+export default internRouter;

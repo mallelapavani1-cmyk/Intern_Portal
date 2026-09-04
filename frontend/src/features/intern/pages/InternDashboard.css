@@ -10,7 +10,9 @@
     grid-template-rows: 72px 1fr;
     min-height: 100vh;
     background: var(--page);
-    background-image: none;
+    background-image:
+        radial-gradient(circle at 12% 28%, rgba(109, 114, 234, 0.14), transparent 38%),
+        radial-gradient(circle at 88% 72%, rgba(140, 87, 232, 0.12), transparent 38%);
     color: var(--text);
     overflow: hidden;
 }
@@ -46,8 +48,8 @@
     height: 36px;
     border-radius: 10px;
     font-size: 18px;
-    background: var(--accent-1);
-    box-shadow: 0 6px 16px var(--shadow);
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    box-shadow: 0 6px 16px rgba(109, 82, 233, 0.4);
 }
 
 .id-nav-right {
@@ -60,14 +62,14 @@
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: var(--accent-1);
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
     color: #fff;
     display: grid;
     place-items: center;
     font-weight: 800;
     font-size: 14px;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px var(--shadow);
+    box-shadow: 0 4px 12px rgba(109, 82, 233, 0.35);
 }
 
 .id-user-info {
@@ -220,7 +222,7 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: var(--accent-1);
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
     border-radius: 24px 24px 0 0;
 }
 
@@ -235,14 +237,14 @@
     width: 72px;
     height: 72px;
     border-radius: 50%;
-    background: var(--accent-1);
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
     color: #fff;
     display: grid;
     place-items: center;
     font-size: 28px;
     font-weight: 900;
     flex-shrink: 0;
-    box-shadow: 0 8px 24px var(--shadow);
+    box-shadow: 0 8px 24px rgba(109, 82, 233, 0.45);
 }
 
 .id-profile-identity {
@@ -435,10 +437,10 @@
 
 .id-progress-fill {
     height: 100%;
-    background: var(--accent-1);
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
     border-radius: 99px;
     transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 8px var(--shadow);
+    box-shadow: 0 0 8px rgba(130, 118, 241, 0.5);
 }
 
 /* ---------- Stat Grid ---------- */

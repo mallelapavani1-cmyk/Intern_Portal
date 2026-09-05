@@ -332,8 +332,8 @@ button {
 .theme-toggle {
     position: fixed;
     z-index: 100;
-    top: 24px;
-    right: 24px;
+    bottom: 24px;
+    left: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -858,8 +858,8 @@ button {
     }
 
     .theme-toggle {
-        top: 18px;
-        right: 18px;
+        bottom: 18px;
+        left: 18px;
     }
 
     .auth-card {
